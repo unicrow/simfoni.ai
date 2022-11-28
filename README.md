@@ -8,7 +8,7 @@ Then run the command: `$ yarn dev`
 
 Open [http://127.0.0.1:5173/](http://127.0.0.1:5173/) with your browser to see the result.
 
-## ####Page Creation
+### Page Creation
 
 Run the command: `$ yarn create-page page-name`
 
@@ -45,7 +45,7 @@ It also automatically adds this piece of code to `vite.config.js` for you:
 pageName: resolve(root, 'page-name.html'),
 ```
 
-## ####Component Creation
+### Component Creation
 
 Run the command: `$ yarn create-component component-name`
 
