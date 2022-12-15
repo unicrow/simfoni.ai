@@ -1,6 +1,7 @@
 ### Getting Started
 
 ---
+
 First, run the command: `$ yarn install`
 
 Then run the command: `$ yarn dev`
