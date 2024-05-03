@@ -1,30 +1,40 @@
+# Deploy static content to GitHub Pages
 name: Deploy to GitHub Pages
 
+# Controls when the workflow will run
 on:
   push:
     branches:
-      - main
+      - main  # Adjust branch name if needed
+  workflow_dispatch:
 
+# Jobs to be executed
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # Checkout the repository
+      - name: Checkout
         uses: actions/checkout@v2
 
+      # Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      # Build static content
+      - name: Build
         run: npm run build
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
+          deploy_key: ${{ secrets.ACCESS_TOKEN }}  # Make sure to set up a GitHub token with repo access
+          publish_dir: ./dist  # Adjust this path based on your build output
