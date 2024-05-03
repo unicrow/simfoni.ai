@@ -4,23 +4,134 @@
   box-sizing: border-box;
 }
 
-html,body {
+html,
+body {
   height: 100%;
 }
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
-}
-
-.container {
-  width: 100%;
-  max-width: 1188px;
-  padding-left: 24px;
-  padding-right: 24px;
-  margin-left: auto;
-  margin-right: auto;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &::before {
+    z-index: 1;
+    --dot-bg: white;
+    --dot-color: black;
+    --dot-size: 1px;
+    --dot-space: 16px;
+    background: linear-gradient(
+          90deg,
+          var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+          transparent 1%
+        )
+        center / var(--dot-space) var(--dot-space),
+      linear-gradient(
+          var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+          transparent 1%
+        )
+        center / var(--dot-space) var(--dot-space),
+      var(--dot-color);
+  }
+  &::after {
+    z-index: 2;
+    background: url(../public/images/blurred-background.webp) no-repeat 0 0;
+    background-size: cover;
+  }
 }
 
 .wrapper {
+  position: relative;
+  z-index: 3;
   flex: 1 0 auto;
+}
+
+.wrapper-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 0;
+}
+
+.text-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 964px;
+  text-align: center;
+  margin: 240px 0 96px;
+
+  h1 {
+    font-size: 64px;
+    line-height: 64px;
+    font-weight: 700;
+    color: #1c1c1c;
+  }
+  p {
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 500;
+    color: #999999;
+  }
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  margin: auto 0 0;
+
+  p {
+    text-align: center;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #999999;
+  }
+}
+.playlist-inner {
+  max-height: 250px;
+  overflow: hidden;
+}
+
+@include media("<large-tablet") {
+  .text-inner {
+    margin: 120px 0 48px;
+
+    h1 {
+      font-size: 54px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
+@include media("<large-phone") {
+  .text-inner {
+    margin: 60px 0 40px;
+    h1 {
+      font-size: 44px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+  .playlist {
+    p {
+      font-size: 16px;
+    }
+  }
+  .playlist-inner,
+  .playlist-inner iframe {
+    width: 100%;
+  }
 }

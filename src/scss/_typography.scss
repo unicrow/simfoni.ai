@@ -1,27 +1,30 @@
 //
-$default-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-  "Helvetica Neue", Arial, sans-serif;
+@font-face {
+  font-family: "Satoshi-Medium";
+  src: url("../public/fonts//Satoshi-Medium.woff2") format("woff2"),
+    url("../public/fonts//Satoshi-Medium.woff") format("woff"),
+    url("../public/fonts//Satoshi-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi-Bold";
+  src: url("../public/fonts/Satoshi-Bold.woff2") format("woff2"),
+    url("../public/fonts/Satoshi-Bold.woff") format("woff"),
+    url("../public/fonts/Satoshi-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+$satoshi: "Satoshi", Arial, sans-serif;
 $default-font-size: 14px;
 $default-line-height: 17px;
 
 body {
-  font-family: $default-font-stack;
+  font-family: $satoshi;
   font-size: $default-font-size;
   line-height: $default-line-height;
-  --dot-bg: white;
-  --dot-color: black;
-  --dot-size: 1px;
-  --dot-space: 16px;
-  background: linear-gradient(
-        90deg,
-        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
-        transparent 1%
-      )
-      center / var(--dot-space) var(--dot-space),
-    linear-gradient(
-        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
-        transparent 1%
-      )
-      center / var(--dot-space) var(--dot-space),
-    var(--dot-color);
 }
