@@ -98,7 +98,7 @@ body {
   }
 }
 .playlist-inner {
-  max-height: 250px;
+  max-height: 200px;
   overflow: hidden;
 }
 
@@ -113,6 +113,11 @@ body {
       font-size: 20px;
     }
   }
+  .playlist {
+    p {
+      font-size: 16px;
+    }
+  }
 }
 
 @include media("<large-phone") {
@@ -125,11 +130,7 @@ body {
       font-size: 18px;
     }
   }
-  .playlist {
-    p {
-      font-size: 16px;
-    }
-  }
+
   .playlist-inner,
   .playlist-inner iframe {
     width: 100%;
