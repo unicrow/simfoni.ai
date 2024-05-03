@@ -1,5 +1,6 @@
 //
-$default-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$default-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif;
 $default-font-size: 14px;
 $default-line-height: 17px;
 
@@ -7,4 +8,20 @@ body {
   font-family: $default-font-stack;
   font-size: $default-font-size;
   line-height: $default-line-height;
+  --dot-bg: white;
+  --dot-color: black;
+  --dot-size: 1px;
+  --dot-space: 16px;
+  background: linear-gradient(
+        90deg,
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
 }
